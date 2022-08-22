@@ -38,8 +38,8 @@ namespace ADS1115 {
     //% fsrValue.defl=V6
     //% weight=52 blockGap=8
     //% parts=ADS1115 trackArgs=0
-    export function setFSR(fsrValue: FSR){
-        switch(fsrValue){
+    export function setFSR(name: FSR){
+        switch(name){
           case FSR.V6: PGA=0;
             break;
           case FSR.V4: PGA=1
