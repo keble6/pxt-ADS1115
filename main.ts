@@ -38,7 +38,7 @@ namespace ADS1115 {
     //% fsrValue.defl=V6
     //% weight=52 blockGap=8
     //% parts=ADS1115 trackArgs=0
-    export function setFSR(name: FSR){
+    /*export function setFSR(name: FSR){
         switch(name){
           case FSR.V6: PGA=0;
             break;
@@ -54,7 +54,7 @@ namespace ADS1115 {
         
         }
         
-    }
+    }*/
     
     //% blockId="ADS1115_SET_ADDR" block="set I2C address %addr"
     //% addrValue.defl=72
