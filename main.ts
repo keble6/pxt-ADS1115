@@ -5,7 +5,7 @@
  *  single-ended inputs only
  *  no comparator useage
  */
-enum FSR {
+/*enum FSR {
     //% block="6.144V"
     V6,
     //% block="4.096V"
@@ -18,7 +18,7 @@ enum FSR {
     V512m,
     //% block="0.256V"
     V256m
-}
+}*/
 
 
 //% weight=20 color=#009900 icon="\u25c0" block="ADS1115"
@@ -69,7 +69,7 @@ namespace ADS1115 {
     //% blockId="ADS1115_READ_ADC" block="readADC %channel"
     //% weight=52 blockGap=8
     //% parts=ADS1115 trackArgs=0
-    export function readADC(channel: number) number {
+    /*export function readADC(channel: number) number {
         //write to the Configuration register
         let CONFIG_HI = OS<<7 | channel<<4 | PGA << 1 | MODE;
         let CONFIG_LO = DIS;
@@ -87,6 +87,6 @@ namespace ADS1115 {
 
 
         
-    }
+    }*/
     
 }
