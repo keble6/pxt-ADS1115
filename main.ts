@@ -71,7 +71,7 @@ namespace ADS1115 {
     //% parts=ADS1115 trackArgs=0
     export function readADC(channel: number) {
         //write to the Configuration register
-        let CONFIG_HI = OS << 7 | (4 + channel) << 4 | PGA << 1 | MODE;
+        let CONFIG_HI = OS << 7 | (4 | channel) << 4 | PGA << 1 | MODE;
         let CONFIG_LO = DIS;
         let buf = pins.createBuffer(3);
         buf[0] = REG_CONFIG
