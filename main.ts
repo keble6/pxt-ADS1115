@@ -33,12 +33,12 @@ namespace ADS1115 {
     let MODE = 1  //single shot reading
     let DIS = 3   //don't use comparator
     /* scale  = max reading/FSR voltage */
-    let scale = 8000 //(32768/4.096) default
+    let scale = 8000 //calculated from 32768/4.096 - default
 
 
     
     //% blockId="ADS1115_SET_FSR" block="set FSR %fsr"
-    //% fsrValue.defl=V4
+    //% fsrValue.defl=FSR.V4
     //% weight=52 blockGap=8
     //% parts=ADS1115 trackArgs=0
     export function setFSR(fsrValue: FSR){
@@ -56,7 +56,6 @@ namespace ADS1115 {
           case FSR.V256m: {PGA=5; scale=128000;}
           
         }
-        //basic.showNumber(scale);
     }
     
     //% blockId="ADS1115_SET_ADDR" block="set I2C address %addr"
@@ -64,9 +63,7 @@ namespace ADS1115 {
     //% weight=52 blockGap=8
     //% parts=ADS1115 trackArgs=0
     export function setADDR(addrValue: number){
-        addr = addrValue;
-        serial.writeLine("addr = " + addrValue);
-        
+        addr = addrValue;        
     }
     
     //% blockId="ADS1115_READ_ADC" block="readADC %channel"
@@ -83,13 +80,8 @@ namespace ADS1115 {
         pins.i2cWriteBuffer(addr, buf);
         //write to the pointer to enable read from conversion reg
         pins.i2cWriteNumber(addr, REG_CONVERSION,NumberFormat.Int8BE);
+        //read ADC
         let result = pins.i2cReadNumber(addr, NumberFormat.Int16BE)
-        //TODO - add scaling (8000 for 4V FSR)
-        //serial.writeLine("reading = " + result);*/
         return(result/scale);
-        //return(CONFIG_HI);
-        //return(scale);
-            
     }
-    
 }
