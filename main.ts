@@ -80,6 +80,10 @@ namespace ADS1115 {
         pins.i2cWriteBuffer(addr, buf);
         //write to the pointer to enable read from conversion reg
         pins.i2cWriteNumber(addr, REG_CONVERSION,NumberFormat.Int8BE);
+        //delay
+        for(i=0; i<100) {
+            i++;
+        }
         //read ADC
         let result = pins.i2cReadNumber(addr, NumberFormat.Int16BE)
         return(result/scale);
