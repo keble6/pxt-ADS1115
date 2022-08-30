@@ -81,7 +81,7 @@ namespace ADS1115 {
         //write to the pointer to enable read from conversion reg
         pins.i2cWriteNumber(addr, REG_CONVERSION,NumberFormat.Int8BE);
         //wait until conversion is complete - CONFIG register bit 15 will be 1
-        i=0;
+        let i=0;
         do {
             if(i>10){
                 break;
