@@ -66,11 +66,11 @@ namespace ADS1115 {
         addr = addrValue;        
     }
     
-    //% blockId="ADS1115_READ_ADC" block="readADC ch: %channel delay (ms): %delay"
-    //% delay.defl=10
+    //% blockId="ADS1115_READ_ADC" block="readADC ch: %channel"
     //% weight=52 blockGap=8
     //% parts=ADS1115 trackArgs=0
     export function readADC(channel: number, delay: number) {
+        let delay = 138; //ms delay between setting config and reading (1/sample rate +10% for osc tolerance)
         //write to the Configuration register
         let CONFIG_HI = OS << 7 | (4 | channel) << 4 | PGA << 1 | MODE;
         let CONFIG_LO = DIS;
@@ -80,7 +80,7 @@ namespace ADS1115 {
         buf[2] = CONFIG_LO;
         pins.i2cWriteBuffer(addr, buf);
         //write to the pointer to enable read from conversion reg
-        //delay until last conversion is done - conversion time is 1/128 = 7.8ms, then add 10% for clock
+        //delay until last conversion is done
         basic.pause(delay);
         //now read
         pins.i2cWriteNumber(addr, REG_CONVERSION,NumberFormat.Int8BE);
