@@ -69,7 +69,7 @@ namespace ADS1115 {
     //% blockId="ADS1115_READ_ADC" block="readADC ch: %channel"
     //% weight=52 blockGap=8
     //% parts=ADS1115 trackArgs=0
-    export function readADC(channel: number, delay: number) {
+    export function readADC(channel: number) {
         let delay = 138; //ms delay between setting config and reading (1/sample rate +10% for osc tolerance)
         //write to the Configuration register
         let CONFIG_HI = OS << 7 | (4 | channel) << 4 | PGA << 1 | MODE;
